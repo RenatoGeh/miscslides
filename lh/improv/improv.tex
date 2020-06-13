@@ -1,0 +1,303 @@
+\documentclass[usenames,dvipsnames]{beamer}
+
+\usepackage[brazilian]{babel}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{lyluatex}
+\usepackage{realbookchords}
+\usepackage{xcolor}
+
+\usetheme{boxes}
+\setbeamertemplate{blocks}[rounded][shadow]
+
+\newcommand\numo[1]{#1\textsuperscript{o}}
+\newcommand\numa[1]{#1\textsuperscript{a}}
+
+\newcommand\srbc[1]{{\footnotesize\rbc{#1}}}
+
+\newtheorem{definicao}{Definição}
+
+\title{Improvisando com a escala pentatônica\\~\\\small ou: Como fingir que sei música com apenas 5
+notas}
+\date{}
+\author{Renato Lui Geh}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}
+  \frametitle{Conteúdo}
+  \tableofcontents
+\end{frame}
+
+\section{Introdução}
+
+\begin{frame}
+  \frametitle{Terminologia}
+
+  Qual a diferença entre ``melodia'' e ``harmonia''?\\~\\
+
+  \begin{itemize}
+    \item \textbf{Melodia:} a parte ``cantável'';\\
+    \item \textbf{Harmonia:} o ``acompanhamento''.
+  \end{itemize}~\\
+
+  Bazaluk mostrou \emph{Harmonia}. Eu vou mostrar \emph{Melodia}. $\ddot\smile$\\~\\
+
+  Improvisação é composição musical em ``tempo-real''.
+\end{frame}
+
+\section{Identificando o centro tonal}
+
+\begin{frame}
+  \frametitle{Campo harmônico maior}
+
+  \begin{block}{Definição. (Campo harmônico maior)}
+    Seja $\Sigma$ um tom. O campo harmônico maior (CHM) de $\Sigma$ são 7 acordes cujas raízes
+    (primeira nota do acorde) pertencem a cada nota da escala maior de $\Sigma$ de forma que sigam
+    a seguinte progressão:
+    \begin{center}
+      \srbc{Ima7}\quad\srbc{IIm7}\quad\srbc{IIIm7}\quad\srbc{IVma7}\quad\srbc{V7}\quad\srbc{VIm7}\quad\srbc{VIIm7(\b5)}
+    \end{center}
+  \end{block}
+  \pause
+
+  \begin{exampleblock}{Exemplo. (Campo harmônico maior de \srbc{C})}
+    \begin{center}
+      \srbc{Cma7}\quad\srbc{Dm7}\quad\srbc{Em7}\quad\srbc{Fma7}\quad\srbc{G7}\quad\srbc{Am7}\quad\srbc{Bm7(\b5)}
+    \end{center}
+  \end{exampleblock}
+  \pause
+
+  \begin{exampleblock}{Exemplo. (Campo harmônico maior de \srbc{G})}
+    \begin{center}
+      \srbc{Gma7}\quad\srbc{Am7}\quad\srbc{Bm7}\quad\srbc{Cma7}\quad\srbc{D7}\quad\srbc{Em7}\quad\srbc{F\k m7(\b5)}
+    \end{center}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Identificando o centro tonal}
+
+  \begin{alertblock}{Rule of thumb.}
+    Se o tom/centro tonal é $\Sigma$, então acordes (possivelmente) seguirão o \emph{campo
+    harmônico} de $\Sigma$.
+  \end{alertblock}~\\
+  \pause
+
+  \begin{table}
+    \begin{tabular}{lcccr}
+      Dado & $\Sigma$ & $\to$ & Acorde $\in$ CHM$(\Sigma)$ & \textcolor{blue}{OK!}\\
+      Dado & Acorde $\in$ CHM$(\Sigma)$ & $\to$ & $\Sigma$ & \textcolor{red}{???}
+    \end{tabular}
+  \end{table}~\\
+  \pause
+
+  \begin{alertblock}{Importante.}
+    O acorde dominante \srbc{V7} (normalmente) define o centro tonal!\\
+    Dado um acorde dominante, ``conte'' até 4 e você chegará à raiz (centro tonal)!
+  \end{alertblock}
+  \pause
+
+  \begin{exampleblock}{Exemplo.}
+    O acorde dominante \srbc{D7} é o quinto acorde do campo harmônico maior de \srbc{G}.
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Autumn Leaves - Parte 1}
+
+  \lilypondfile{scores/autumnleaves_1.ly}
+\end{frame}
+
+\begin{frame}
+  \frametitle{A escala menor}
+
+  \begin{alertblock}{Dica.}
+    Se a \srbc{V7} estabelece um \srbc{Im7}, então estamos no campo harmônico menor.
+  \end{alertblock}
+  \pause
+
+  \begin{exampleblock}{Exemplo.}
+    A dominante \srbc{B7} estabelece o centro tonal de \srbc{Em7} em Autumn Leaves.
+  \end{exampleblock}
+  \pause
+
+  \begin{alertblock}{Dica.}
+    A escala menor de $M$ está a $1\frac{1}{2}$ tom de distância abaixo da sua escala maior
+    relativa.
+  \end{alertblock}
+  \pause
+
+  \begin{exampleblock}{Exemplo.}
+    A escala menor de \srbc{Em} tem como relativa maior \srbc{Gma}.
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Autumn Leaves - Parte 2}
+
+  \lilypondfile{scores/autumnleaves_2.ly}
+\end{frame}
+
+\section{Escala pentatônica}
+
+\begin{frame}[fragile]
+  \frametitle{Escala pentatônica}
+
+  \begin{block}{Definição. (Escala pentatônica maior)}
+    É a escala composta pela \numa{1}, \numa{2}, \numa{3}, \numa{5} e \numa{6} notas da escala maior.
+  \end{block}~\\
+  \pause
+
+  Para a escala maior de \rbc{C}, teríamos:\\
+
+  \begin{center}
+    \begin{lilypond}
+      \include "lilyjazz.ily"
+      \include "jazzchords.ily"
+      \include "jazzextras.ily"
+
+      \score {
+        \relative c' {
+          \time 5/4
+          \clef treble
+          c4 d4 e4 g4 a4
+        }
+      }
+    \end{lilypond}
+  \end{center}~\\
+  \pause
+
+  Para escala maior de \rbc{G} seria:\\
+
+  \begin{center}
+    \begin{lilypond}
+      \include "lilyjazz.ily"
+      \include "jazzchords.ily"
+      \include "jazzextras.ily"
+
+      \score {
+        \relative g' {
+          \key g \major
+          \time 5/4
+          \clef treble
+          g4 a4 b4 d4 e4
+        }
+      }
+    \end{lilypond}
+  \end{center}
+\end{frame}
+
+\section{Escala blues}
+
+\begin{frame}[fragile]
+  \frametitle{Escala blues}
+
+  \begin{block}{Definição. (Escala blues maior)}
+    É a escala composta pela pentatônica maior + blue note (3\srbc{\b}):
+    \begin{center}
+      1, 2, 3\srbc{\b}, 3, 5, 6.
+    \end{center}
+  \end{block}~\\
+  \pause
+
+  Para \rbc{C}, teríamos:\\
+
+  \begin{center}
+    \begin{lilypond}
+      \include "lilyjazz.ily"
+      \include "jazzchords.ily"
+      \include "jazzextras.ily"
+
+      \score {
+        \relative c' {
+          \time 6/4
+          \clef treble
+          c4 d ees e g a
+        }
+      }
+    \end{lilypond}
+  \end{center}~\\
+  \pause
+
+  Para \rbc{G} seria:\\
+
+  \begin{center}
+    \begin{lilypond}
+      \include "lilyjazz.ily"
+      \include "jazzchords.ily"
+      \include "jazzextras.ily"
+
+      \score {
+        \relative g' {
+          \key g \major
+          \time 6/4
+          \clef treble
+          g4 a ais b d e
+        }
+      }
+    \end{lilypond}
+  \end{center}
+\end{frame}
+
+\section{A quinta aumentada}
+
+\begin{frame}[fragile]
+  \frametitle{Quinta aumentada}
+
+  \begin{block}{Definição. (Escala blues maior + 5\srbc{\s})}
+    Escala blues maior + quinta aumentada (5\srbc{\s}): 1, 2, 3\srbc{\b}, 3, 5, 5\srbc{\s}, 6.
+  \end{block}
+  \pause
+
+  Estamos ``emprestando'' uma nota do campo harmônico menor.\\~\\
+
+  Para \rbc{C}, teríamos:\\
+
+  \begin{center}
+    \begin{lilypond}
+      \include "lilyjazz.ily"
+      \include "jazzchords.ily"
+      \include "jazzextras.ily"
+
+      \score {
+        \relative c' {
+          \time 7/4
+          \clef treble
+          c4 d ees e g gis a
+        }
+      }
+    \end{lilypond}
+  \end{center}~\\
+  \pause
+
+  Para \rbc{G} seria:\\
+
+  \begin{center}
+    \begin{lilypond}
+      \include "lilyjazz.ily"
+      \include "jazzchords.ily"
+      \include "jazzextras.ily"
+
+      \score {
+        \relative g' {
+          \key g \major
+          \time 7/4
+          \clef treble
+          g4 a ais b d dis e
+        }
+      }
+    \end{lilypond}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \begin{center}
+    \large Obrigado!\\~\\
+    \normalsize Slides e código disponíveis em \url{https://github.com/RenatoGeh/miscslides}
+  \end{center}
+\end{frame}
+
+\end{document}
