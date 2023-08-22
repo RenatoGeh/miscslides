@@ -1,0 +1,13 @@
+% neural rule
+?::digit(Image, {0..9}) as @digit_net :- data(Image).
+% data loaders -- interact with Python code
+data(img1) &$\sim$& test(@mnist_test), train(@mnist_train).
+data(img2) &$\sim$& test(@mnist_test), train(@mnist_train).
+% prob. answer set program
+add(Z) :- digit(I, X), digit(J, Y), Z = X + Y.
+subtract(Z) :- digit(I, X), digit(J, Y), Z = X - Y.
+multiply(Z) :- digit(I, X), digit(J, Y), Z = X * Y.
+% learn the program end-to-end and pass learning parameters
+#learn @mnist_sum, lr = 1., niters = 5, ..., batch = 1000.
+% inference: what is the probability of X + Y = 14 given X = 8?
+#query add(11) | digit(img1, 8).
